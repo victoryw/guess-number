@@ -12,14 +12,14 @@ public abstract class GuessNumberGenerator {
 
     private void validateGuessNumberLength(int[] generate) {
         if(generate.length != 4) {
-            throw new GuessNumberLengthException();
+            throw new com.thoughtworks.guessnumber.GuessNumberLengthException();
         }
     }
 
     private void validateDuplicatedGuessNumber(int[] guessNumber) {
         final int noDuplicatedLength = java.util.Arrays.stream(guessNumber).distinct().toArray().length;
         if(noDuplicatedLength < guessNumber.length) {
-            throw new DuplicateGuessNumberException();
+            throw new com.thoughtworks.guessnumber.DuplicateGuessNumberException();
         }
     }
 }

@@ -1,6 +1,7 @@
 package com.thoughtworks.guessnumber;
 
 import org.junit.Before;
+import org.junit.Test;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
@@ -19,13 +20,13 @@ public class GuessNumberGeneratorTest {
         doReturn(new int[]{1, 2, 3, 4}).when(generator).createValue();
     }
 
-    @org.junit.Test
+    @Test
     public void should_use_the_guess_number_generator_to_createValue() {
         generator.generate();
         verify(generator).createValue();
     }
 
-    @org.junit.Test
+    @Test
     public void should_return_the_value_by_create_value_method() {
         final int[] expected = {1, 2, 3, 4};
         doReturn(expected).when(generator).createValue();
@@ -33,21 +34,21 @@ public class GuessNumberGeneratorTest {
         assertEquals(expected, generate);
     }
 
-    @org.junit.Test
+    @Test
     public void should_failed_when_the_guess_number_is_duplicated() {
         doReturn(new int[]{1, 1, 3, 4}).when(generator).createValue();
         thrown.expect(DuplicateGuessNumberException.class);
         generator.generate();
     }
 
-    @org.junit.Test
+    @Test
     public void should_failed_when_the_guess_number_length_length_than_four() {
         doReturn(new int[]{1, 2, 3, 4, 5}).when(generator).createValue();
         thrown.expect(GuessNumberLengthException.class);
         generator.generate();
     }
 
-    @org.junit.Test
+    @Test
     public void should_failed_when_the_guess_number_length_short_than_four() {
         doReturn(new int[]{1, 2, 3}).when(generator).createValue();
         thrown.expect(GuessNumberLengthException.class);
